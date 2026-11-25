@@ -1,4 +1,35 @@
-# NIKO ANALOG 37 — Studio Niko
+# NIKO ANALOG 37 — Studio Niko Design
+
+**Browser-native synthesizer · Techno groovebox · Web Audio**
+
+[![DSP](https://img.shields.io/badge/DSP-Web_Audio-blue)](index.html) [![License](https://img.shields.io/badge/license-restricted-lightgrey)](LICENSE.md)
+
+> **Identité du dépôt : N8V est le nom historique, pas un codec vidéo 8K actuel.** La branche main contient le synthétiseur NIKO ANALOG 37. Ce dépôt doit être classé dans les projets audio.
+
+[Application (URL GitHub Pages indicative)](https://nikoju1977.github.io/N8V/) · [English overview](#english-overview) · [Portfolio](https://github.com/Nikoju1977)
+
+## Architecture audio
+
+```mermaid
+flowchart TD
+    Keys[37-note keyboard and sequencer] --> Synth[Digital synth voice]
+    BassSeq[Bass sequencer and arp] --> Bass[Bass voice]
+    DrumSeq[Drum sequencer] --> Drums[8 synthesized instruments]
+    Synth --> Mixer[Three audio buses]
+    Bass --> Mixer
+    Drums --> Mixer
+    Mixer --> FX[Master processing]
+    FX --> Output[Audio output]
+    FX --> WAV[PCM WAV recording]
+```
+
+| Source | Responsabilité |
+| --- | --- |
+| [index.html](index.html) | Interface, transport, synthèse, mixage, capture et presets |
+| [manifest.webmanifest](manifest.webmanifest) | Métadonnées PWA |
+| [service-worker.js](service-worker.js) | Service worker |
+
+Le code inspecté crée de vrais oscillateurs Web Audio, enveloppes et générateurs de bruit. L'inspiration analogique décrit une architecture musicale, pas une reproduction physique certifiée d'un synthétiseur commercial.
 
 **Synthétiseur virtuel et station de production techno (v1.1).**
 
@@ -44,3 +75,18 @@ Création : **Studio Niko**. Projet indépendant, non affilié à Moog Music. In
 ## Code source
 
 https://github.com/Nikoju1977/N8V
+
+
+## Contrôle reproductible proposé
+
+Activer le son, essayer les huit percussions, puis jouer le clavier et la basse. Enregistrer un court WAV, vérifier son en-tête, ses canaux et sa lecture. Exporter puis restaurer un preset JSON. Consigner le commit, le navigateur et les éventuels décrochages audio. Les essais historiques décrits plus haut ne sont pas une validation de cette révision : aucun nouveau test audio n'a été lancé.
+
+## English overview
+
+NIKO ANALOG 37 is a browser-based digital synthesizer and techno groovebox with a 37-note keyboard, melodic sequencing, arpeggiation, eight drum voices, an independent bass and a three-bus mixer. The current N8V repository is an audio application, not an 8K video codec. It includes PCM WAV recording and JSON presets. Browser and mobile audio reliability must be verified separately. No fresh runtime or deployment check was performed for this documentation update.
+
+## Licence / License
+
+[LICENSE.md](LICENSE.md) preserves existing rights for original Studio Niko Design contributions; publication alone is not an open-source license. Third-party rights remain unaffected. Reproducible issue reports are welcome subject to these terms.
+
+**Studio Niko Design** · Browser-native music production.
